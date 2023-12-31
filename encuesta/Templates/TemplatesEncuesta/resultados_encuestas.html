@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encuestas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Resultados Encuestas</h1>
+      {% for key, value in encuestas.items %}
+        <h2>Encuesta {{ key }}</h2>
+        {% for key, value in value.items %}
+          <h3>{{ key }}</h3>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Respuesta</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for key, value in value.items %}
+                <tr>
+                  <td>{{ key }}</td>
+                  <td>{{ value }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endfor %}
+      {% endfor %}
+      <a href="../../" class="btn p-2 btn-success w-40">Volver</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="
+                                sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  </body>
+</html>

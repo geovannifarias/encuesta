@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título de tu página</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="alert display-1 text-center">LISTADO DE USUARIOS</div>
+    </div>
+    <div class="container-fluid">
+        <table class="table table-sm">
+            <thead>
+                <tr class="table-dark">
+                    <th>RUT</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>TELEFONO</th>
+                    <th>EMAIL</th>
+                    <th>EMPRESA</th>
+                    <th>ROL</th>
+                    <th>OPCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in mostrar %}
+                    <tr>
+                        <td>{{ usuario.rut }}</td>
+                        <td>{{ usuario.nombre }}</td>
+                        <td>{{ usuario.apellido }}</td>
+                        <td>{{ usuario.numero_telefonico }}</td>
+                        <td>{{ usuario.email }}</td>
+                        <td>{{ usuario.nombre_empresa }}</td>
+                        <td>{{ usuario.id_rol }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{% url 'editar' usuario.rut %}"><i class="bi bi-pencil-fill"></i></a>
+                            <a class="btn btn-danger" href=" {% url 'eliminar' usuario.rut %}"><i class="bi bi-trash3"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    
+    <br>
+    <div class="col"><a href="/inicio/" class="btn p-2 btn-success w-45 " style="float:right; margin-right: 50%;">VOLVER</a></div>
+</body>
+</html>

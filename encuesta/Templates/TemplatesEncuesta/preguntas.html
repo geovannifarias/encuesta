@@ -1,0 +1,16 @@
+<h1>{{ encuesta.nombre }}</h1>
+
+{% for pregunta in preguntas %}
+<div>
+    <h2>{{ pregunta.pregunta_texto }}</h2>
+    <div>
+        {% if pregunta.alternativa_set.all %}
+            {% for alternativa in pregunta.alternativa_set.all %}
+                <h3>{{ alternativa.texto_alternativa }}</h3>
+            {% endfor %}
+        {% else %}
+            <p>no hay alternativas</p>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
